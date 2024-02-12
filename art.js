@@ -23,7 +23,7 @@ var blocks = []
 const channelNum = 6    // 建立6个通道
 const channelX = []
 const channelWidth = Math.round(window.innerWidth / channelNum)
-const beatLine = window.innerHeight - channelWidth * 0.8
+const beatLine = window.innerHeight - channelWidth
 
 function aClear(x1 = 0, y1 = 0, w = window.innerWidth, h = window.innerHeight) {
     ctx.clearRect(x1, y1, w, h)
@@ -92,7 +92,14 @@ function initBeatLine() {
     aDrawLine('#FF0000', 0, beatLine, window.innerWidth, beatLine)
 }
 
-//function witch
+function whichChannel(x, y) {
+    if (y < beatLine) return null
+    for (let i = 0; i < channelX.length; i++) {
+        if (x > (channelX[i - 1] || 0) && x < channelX[i]) return i
+    }
+
+    return null
+}
 
 function beatChannel(channel) {
     for (let block of blocks.filter(b => b.channel === channel)) {
@@ -103,6 +110,15 @@ function beatChannel(channel) {
             scoreAdd()
         }
     }
+}
+
+function handleClick(e) {
+    e.preventDefault()
+    const { x, y } = aXY2Cav(e.clientX, e.clientY)
+
+    const result = whichChannel(x, y)
+    if (result === null) return
+    beatChannel(result)
 }
 
 function handleKey(ee) {
