@@ -32,6 +32,7 @@ function aClear(x1 = 0, y1 = 0, w = window.innerWidth, h = window.innerHeight) {
 function aXY2Cav(x, y) { return { x: Math.round(x - a$().getBoundingClientRect().left), y: Math.round(y - a$().getBoundingClientRect().top) } }
 
 function aDraw(color, x, y, w, h) {
+    ctx.beginPath()
     ctx.fillStyle = color
     ctx.fillRect(x, y, w, h)
 }
@@ -68,6 +69,7 @@ function aBlock(color, channel) {
 }
 
 function aDrawLine(color, x1, y1, x2, y2) {
+    ctx.beginPath()
     ctx.strokeStyle = color
     ctx.moveTo(x1, y1)
     ctx.lineTo(x2, y2)
@@ -89,6 +91,8 @@ function initChannels() {
 function initBeatLine() {
     aDrawLine('#FF0000', 0, beatLine, window.innerWidth, beatLine)
 }
+
+//function witch
 
 function beatChannel(channel) {
     for (let block of blocks.filter(b => b.channel === channel)) {
