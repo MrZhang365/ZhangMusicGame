@@ -6,7 +6,7 @@ async function askForStart() {
     initChannels()    // 初始化所有方块通道
 
     document.onkeydown = handleKey    // 绑定事件监听器
-    $('#paper').onclick = handleClick    // 绑定事件监听器 点击
+    $('#paper').onmousedown = handleClick    // 绑定事件监听器 点击
     document.onclick = e => { e.preventDefault(); getBeats(); m$(); document.onclick = () => {} }
 
     $('#bgm').onpause = () => {    // 绑定事件监听器，计分
