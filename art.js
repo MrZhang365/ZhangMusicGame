@@ -23,7 +23,7 @@ var blocks = []
 const channelNum = 6    // 建立6个通道
 const channelX = []
 const channelWidth = Math.round(window.innerWidth / channelNum)
-const beatLine = window.innerHeight - channelWidth
+const beatLine = window.innerHeight * 0.8
 
 function aClear(x1 = 0, y1 = 0, w = window.innerWidth, h = window.innerHeight) {
     ctx.clearRect(x1, y1, w, h)
