@@ -12,6 +12,8 @@ async function askForStart() {
     $('#bgm').onpause = () => {    // 绑定事件监听器，计分
         alert(`方块数量：${total}\n命中数量：${score}\n命中率：${get100Score()}%`)
     }
+    getBeats()
+    m$()
 }
 
 askForStart()
